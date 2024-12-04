@@ -142,11 +142,9 @@ def atualizar_usuario(usuario_id, nome=None, sexo=None, idade=None, data_nascime
     cursor = conexao.cursor()
     
     try:
-        # Criando a base do comando SQL
         query = "UPDATE usuarios SET "
         valores = []
         
-        # Adicionando campos dinamicamente
         if nome:
             query += "nome = ?, "
             valores.append(nome)
@@ -163,7 +161,6 @@ def atualizar_usuario(usuario_id, nome=None, sexo=None, idade=None, data_nascime
             query += "posicao_familiar = ?, "
             valores.append(posicao_familiar)
         
-        # Removendo a última vírgula e espaço
         query = query.rstrip(", ")
         query += " WHERE id = ?"
         valores.append(usuario_id)
@@ -176,7 +173,6 @@ def atualizar_usuario(usuario_id, nome=None, sexo=None, idade=None, data_nascime
     finally:
         conexao.close()
 
-# Função para excluir um usuário
 def excluir_usuario(usuario_id):
     conexao = conectar_banco()
     cursor = conexao.cursor()
@@ -190,7 +186,6 @@ def excluir_usuario(usuario_id):
     finally:
         conexao.close()
 
-# Função para atualizar uma categoria
 def atualizar_categoria(categoria_id, nome=None, categoria_mae_id=None):
     conexao = conectar_banco()
     cursor = conexao.cursor()
@@ -218,7 +213,6 @@ def atualizar_categoria(categoria_id, nome=None, categoria_mae_id=None):
     finally:
         conexao.close()
 
-# Função para excluir uma categoria
 def excluir_categoria(categoria_id):
     conexao = conectar_banco()
     cursor = conexao.cursor()
@@ -232,7 +226,6 @@ def excluir_categoria(categoria_id):
     finally:
         conexao.close()
 
-# Função para atualizar um produto
 def atualizar_produto(produto_id, **kwargs):
     conexao = conectar_banco()
     cursor = conexao.cursor()
@@ -257,7 +250,6 @@ def atualizar_produto(produto_id, **kwargs):
     finally:
         conexao.close()
 
-# Função para excluir um produto
 def excluir_produto(produto_id):
     conexao = conectar_banco()
     cursor = conexao.cursor()
@@ -270,3 +262,8 @@ def excluir_produto(produto_id):
         print(f"Erro ao excluir produto: {e}")
     finally:
         conexao.close()
+
+if __name__ == "__main__":
+    # Criar as tabelas e adicionar dados de exemplo
+    criar_tabelas()
+    
